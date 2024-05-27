@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"net"
 	"os"
 
 	"github.com/PeronGH/findcf/internal/scanner"
@@ -14,6 +13,6 @@ func main() {
 		os.Exit(1)
 	}
 
-	iscf := scanner.ScanIP(net.ParseIP(os.Args[1]))
+	iscf := scanner.ScanIP(os.Args[1])
 	fmt.Println(iscf)
 }

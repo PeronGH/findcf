@@ -39,7 +39,7 @@ func main() {
 	defer file.Close()
 
 	// Extract the IPs
-	ipCount := 0
+	numIPs := 0
 	networks := reader.Networks()
 
 	record := geoip2.Country{}
@@ -53,10 +53,10 @@ func main() {
 				continue
 			}
 			ones, bits := subnet.Mask.Size()
-			ipCount += 1 << uint(bits-ones)
+			numIPs += 1 << (bits - ones)
 			file.WriteString(subnet.String() + "\n")
 		}
 	}
 
-	log.Printf("Extracted %d IPs\n", ipCount)
+	log.Printf("Extracted %d IPs\n", numIPs)
 }
